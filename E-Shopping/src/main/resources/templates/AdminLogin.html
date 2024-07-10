@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+body {
+	background-color: yellow;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	min-height: 100vh;
+}
+.loginpage
+{
+   background-color:pink;
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	flex-direction:column; 
+	height: 600px;
+	width: 500px;
+	box-shadow: 0px 0px 4px green;
+}
+.botton
+{
+text-align: center;
+}
+</style>
+<body>
+<div class="loginpage">
+<h1> Admin Login page</h1>
+<div class="form">
+<form >
+<div class="input-box">
+<input placeholder="enter your emaildid" name="emailid">
+</div>
+<div class="input-box">
+<input placeholder="enter your password" name="password">
+</div>
+<div class="button">
+<input type="submit" value="register">
+</div>
+</form>
+<h1 style="color: greeen" th:text="${msg}"></h1>
+</div>
+</div>
+</body>
+</html>

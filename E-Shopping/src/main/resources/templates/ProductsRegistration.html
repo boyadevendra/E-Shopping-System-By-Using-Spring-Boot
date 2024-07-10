@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background:linear-gradient(75deg,red,pink,yellow,green,black);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .formbox
+    {
+        position: relative;
+        height: 700px;
+        width: 450px;
+        border: 3px solid #0b0a0a;
+        /* background-color: rgb(48, 190, 168); */
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction:column;
+        backdrop-filter: blur(100px);
+    }
+    .formbox h1
+    {
+        color: #fff;
+        text-align: center;
+        font-size: 32px;
+    }
+    .formbox .input-box
+    {
+        position: relative;
+        margin: 20px ;
+        width: 320px;
+        /* border-bottom: 2px solid #fff;
+        border: none;
+        outline: none; */
+
+    }
+    .formbox .input-box input
+    {
+        height: 40px;
+        width: 100%;
+        background: transparent;
+        border: none;
+        outline:none;
+        border-bottom: 2px solid white;
+    }
+    i{
+        position:absolute;
+        color: #fff;
+        top:13px;
+        right: 0;
+
+    }
+     input::placeholder
+    {
+        color: #fff;
+        font-size: 18px;
+        text-transform: capitalize;
+    }
+    .button .btn 
+    {
+        margin-left: 20px;
+        height: 40px;
+        width: 325px;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 20px black;
+        cursor: pointer;
+        background-color: aqua;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="formbox">
+            <form th:action="@{/productRegistration}" th:object="${productDetails}">
+                <h1>products Registration</h1>
+                <div class="input-box">
+                    <i class='bx bxs-user'></i>
+                    <input type="text"  placeholder="Enter product Name" th:field="*{productname}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bxs-envelope' ></i>
+                    <input type="text"  placeholder="Enter Product Price" th:field="*{price}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="text"  placeholder="Enter Product Quantity" th:field="*{quantity}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="text"  placeholder="Enter Product Brand" th:field="*{productbrand}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="text"  placeholder="Enter Product discount" th:field="*{discount}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="text"  placeholder="Enter Product productcategory" th:field="*{productcategory}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="text"  placeholder="Enter Product gendercategory" th:field="*{gendercategory}">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-lock'></i>
+                    <input type="text"  placeholder="Enter Product color" th:field="*{color}">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register" class="btn">
+                </div>
+            </form>
+            <h1 style="color: black;" th:text="${msg}"></h1>
+        </div>
+    </div>
+</body>
+</html>

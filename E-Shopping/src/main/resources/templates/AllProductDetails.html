@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+#pricediv
+{
+	background-color: orangered;
+	width: 120px;
+	height: 80px;
+	display: none;
+	border-radius: 10px;
+	
+}
+
+.priceButton
+ {
+ 	width: 100px;
+}
+#namediv{
+display: none;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+</style>
+
+</head>
+<body>
+<center>
+	<h1>Welcome To Mr./Mrs. : <span th:text="${msg}"></span></h1>
+	<h1>All Products Details</h1>
+
+	<strong>Filter By</strong>
+	<table></table>
+		<tr>
+			<td>
+				<input type="checkbox" onclick="pricediv()" id="ok">By Price</input>
+				<div id="pricediv">
+					<center>
+						<table>
+							<tr>
+							    <td>
+							       <form action="FilterByPrice">
+							          <input value="100" hidden="true" name="minprice">
+							          <input value="1000" hidden="true" name="maxprice">
+							          <input type="submit" value="100 to 1000" class="pricebutton">
+							       </form>
+							     </td>
+							</tr>
+							  <tr>
+							        <td>
+							           <form action="FilterByPrice">
+							               <input value="1000" hidden="true" name="minprice">
+							               <input value="5000" hidden="true" name="maxprice">
+							               <input type="submit" value="1000 to 5000" class="pricebutton">
+							           </form>
+							        </td>
+							   </tr>
+							<tr>
+							     <td>
+							        <form action="FilterByPrice">
+							               <input value="5000" hidden="true" name="minprice">
+							               <input value="100000" hidden="true" name="maxprice">
+							               <input type="submit" value="5000 to 100000" class="pricebutton">
+							         </form>
+							      </td>
+							</tr>
+
+	                   </table>
+					</center>
+			   </div>
+		 </td>
+	 </tr><br><br>
+			
+			
+			<tr>
+				<td>
+					<input type="checkbox" onclick="namediv()" id="byname">By Name</input>
+					<div id="namediv">
+					    <select th:each="prod:${listofproduct}">
+					       <option th:text="${prod.productname}">
+					    </select>
+					</div>
+				</td>
+		   </tr>     <br><br>
+			<tr>
+				<td>
+					<input type="checkbox">By Brand</input>
+				</td>
+			</tr><br><br>
+			<tr>
+			<td>
+				<input type="checkbox">By Category</input>
+			</td>
+		    </tr><br><br>
+	<table border="1px">
+		<tr>
+		    <th>Product id</th>
+			<th>Product Name</th>
+			<th>Product Price</th>
+			<th>Product Brand</th>
+			<th>Product Discount</th>
+			<th>Product Category</th>
+			<th>Gender Category</th>
+			<th>Product Color</th>
+		</tr>
+		<tr th:each="product:${listofproduct}">
+		    <td th:text="${product.productid}"></td>
+			<td th:text="${product.productname}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.productbrand}"></td>
+			<td th:text="${product.discount}"></td>
+			<td th:text="${product.productcategory}"></td>
+			<td th:text="${product.gendercategory}"></td>
+			<td th:text="${product.color}">
+			  <td>
+			     <form action="addToCart">
+			        <input th:value="${product.productid}" name="id" hidden="true">
+			        <input type="submit" value="Cart">
+			     </form>
+			 </td>
+			
+			
+			 <td>
+			    <form action="productbyid">
+			        <input th:value="${product.productid}" name="id" hidden="true">
+			        <input type="submit" value="Buy">
+			    </form>
+			 </td>
+			
+			
+	  </tr>
+  </table>
+	<Strong th:text="${prod}"></Strong>
+</center>
+
+<script type="text/javascript">
+	function pricediv(){
+		var t=document.getElementById("ok").checked;
+		console.log(t);
+		if(t)
+		{
+			document.getElementById("pricediv").style.display="flex"
+		}
+		else
+		{
+			document.getElementById("pricediv").style.display="none"
+		}
+		
+	}
+	
+	function namediv(){
+		var t=document.getElementById("byname").checked;
+		console.log(t);
+		if(t)
+		{
+			document.getElementById("namediv").style.display="flex"
+		}
+		else
+		{
+			document.getElementById("namediv").style.display="none"
+		}
+		
+	}
+</script>
+</body>
+</html>
